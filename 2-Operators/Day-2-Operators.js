@@ -1,23 +1,24 @@
-#!/bin/python3
+function processData(input) {
+    //Enter your code here
+    var inputArray = input.split('\n');
+    
+    var n = parseFloat(inputArray[0]);
+    var tipperc = parseFloat(inputArray[1]);
+    var taxperc = parseFloat(inputArray[2]);
+    var tip = n*tipperc/100;
+    var tax = n*taxperc/100;
+    var MealCost = Math.round(n+tip+tax);
+    
+    console.log(MealCost);
+} 
 
-import math
-import os
-import random
-import re
-import sys
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
 
-# Complete the solve function below.
-def solve(meal_cost, tip_percent, tax_percent):
-    tip=float(meal_cost*(tip_percent/100))
-    tax=float(meal_cost*(tax_percent/100))
-    print(round(meal_cost+tip+tax))
-
-
-if __name__ == '__main__':
-    meal_cost = float(input())
-
-    tip_percent = int(input())
-
-    tax_percent = int(input())
-
-    solve(meal_cost, tip_percent, tax_percent)
+process.stdin.on("end", function () {
+   processData(_input);
+});
