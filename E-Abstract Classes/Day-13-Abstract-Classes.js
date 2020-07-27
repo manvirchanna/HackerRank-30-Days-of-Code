@@ -1,23 +1,31 @@
-from abc import ABCMeta, abstractmethod
-class Book(object, metaclass=ABCMeta):
-    def __init__(self,title,author):
-        self.title=title
-        self.author=author   
-    @abstractmethod
-    def display(): pass
 
-class MyBook(Book):
-    def __init__(self, title, author, price):
-        super().__init__(title, author)
-        self.price = price
 
-    def display(self):
-        print("Title: " + self.title + "\nAuthor: " + self.author + "\nPrice: " + str(self.price))
+// Declare your class here.
+class MyBook extends Book {
+    
+    /**   
+    *   Class Constructor
+    *   
+    *   @param title The book's title.
+    *   @param author The book's author.
+    *   @param price The book's price.
+    **/
+    // Write your constructor here
+     constructor(title, author, price) {
+        super(title, author);
+        this.price = price;
+     }
+    /**   
+    *   Method Name: display
+    *   
+    *   Print the title, author, and price in the specified format.
+    **/
+    // Write your method here
+     display() { 
+        console.log("Title: " + this.title);
+        console.log("Author: " + this.author);
+        console.log("Price: " + this.price);
+    }
+}
+// End class
 
-#Write MyBook class
-
-title=input()
-author=input()
-price=int(input())
-new_novel=MyBook(title,author,price)
-new_novel.display()
