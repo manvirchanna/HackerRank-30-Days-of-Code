@@ -1,42 +1,33 @@
-class Person:
-	def __init__(self, firstName, lastName, idNumber):
-		self.firstName = firstName
-		self.lastName = lastName
-		self.idNumber = idNumber
-	def printPerson(self):
-		print("Name:", self.lastName + ",", self.firstName)
-		print("ID:", self.idNumber)
 
-class Student(Person):
-    def __init__(self, firstName, lastName, idNumber, testScores):
-        super().__init__(firstName, lastName, idNumber)
-        self.testScores = testScores
 
-    def calculate(self):
-        total = 0
+class Student extends Person {
+    constructor(firstName, lastName, idNumber, testScores) {
+        super(firstName, lastName, idNumber);
+        this.testScores = testScores;
+    }
+    calculate() {
+         let average = 0;
+        let sum = 0;
+        let grade = '';
+        for (let i = 0, length = this.testScores.length; i < length; i++) {
+            sum += this.testScores[i];
+        }
+        average = sum / this.testScores.length;
+        if (90 <= average && average <= 100) {
+            grade = 'O';
+        } else if (80 <= average && average < 90) {
+            grade = 'E';
+        } else if (70 <= average && average < 80) {
+            grade = 'A';
+        } else if (55 <= average && average < 70) {
+            grade = 'P';
+        } else if (40 <= average && average < 55) {
+            grade = 'D';
+        } else {
+            grade = 'T';
+        }
+        return grade;
+    }
+}
+    
 
-        for testScore in self.testScores:
-            total += testScore
-
-        avg = total / len(self.testScores)
-
-        if 90 <= avg <= 100:
-            return 'O'
-        if 80 <= avg < 90:
-            return 'E'
-        if 70 <= avg < 80:
-            return 'A'
-        if 55 <= avg < 70:
-            return 'P'
-        if 40 <= avg < 55:
-            return 'D'
-        return 'T'
-line = input().split()
-firstName = line[0]
-lastName = line[1]
-idNum = line[2]
-numScores = int(input()) # not needed for Python
-scores = list( map(int, input().split()) )
-s = Student(firstName, lastName, idNum, scores)
-s.printPerson()
-print("Grade:", s.calculate())
