@@ -54,7 +54,6 @@ function main(){
         }
     }
     //finally print whether string s is palindrome or not
-
     if(isPalindrome)
         console.log("The word, "+s+", is a palindrome.");    
     else
