@@ -18,6 +18,7 @@ function readLine() {
 }
 
 //Write your code here
+
 var Calculator = function() {
     Calculator.prototype.power = function(n,p) {
         
